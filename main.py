@@ -2,10 +2,13 @@ import requests
 from flask import Flask,render_template
 
 app = Flask(__name__)
+    
+response=requests.get("https://api.npoint.io/18aae9aafedc1b39590e")
+data=response.json()
 
 @app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template("index.html",all_data=data)
 
 @app.route('/about')
 def about():
