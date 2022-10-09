@@ -55,7 +55,12 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="page-heading">
+              {% if msg_sent: %}
+              <h1>Sucessfully send the message</h1>
+              {%else %}
               <h1>Contact Me</h1>
+              {% endif %}
+
               <span class="subheading">Have questions? I have answers.</span>
             </div>
           </div>
@@ -79,12 +84,13 @@
               <!-- To make this form functional, sign up at-->
               <!-- https://startbootstrap.com/solution/contact-forms-->
               <!-- to get an API token!-->
-              <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+              <form action="/contact" method="post" id="contactForm">
                 <div class="form-floating">
                   <input
                     class="form-control"
                     id="name"
                     type="text"
+                    name="name"
                     placeholder="Enter your name..."
                     data-sb-validations="required"
                   />
@@ -101,6 +107,7 @@
                     class="form-control"
                     id="email"
                     type="email"
+                    name="email"
                     placeholder="Enter your email..."
                     data-sb-validations="required,email"
                   />
@@ -120,6 +127,7 @@
                     class="form-control"
                     id="phone"
                     type="tel"
+                    name="phone_number"
                     placeholder="Enter your phone number..."
                     data-sb-validations="required"
                   />
@@ -136,6 +144,7 @@
                     class="form-control"
                     id="message"
                     placeholder="Enter your message here..."
+                    name="message"
                     style="height: 12rem"
                     data-sb-validations="required"
                   ></textarea>
@@ -176,6 +185,7 @@
                   class="btn btn-primary text-uppercase disabled"
                   id="submitButton"
                   type="submit"
+                  value="Submit"
                 >
                   Send
                 </button>
